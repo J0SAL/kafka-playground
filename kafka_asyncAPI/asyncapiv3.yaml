@@ -1,0 +1,38 @@
+asyncapi: "3.0.0"
+info:
+  title: "User Signup API"
+  version: "1.0.0"
+  description: |
+    The API notifies you whenever a new user sign ups into the application
+
+servers:
+  kafkaServer:
+    host: <server-url>
+    description: "Kafka Server"
+    protocol: kafka
+    protocolVersion: <0.1.1>
+
+channels:
+  userSignedUp:
+    messages:
+      userSignedUp:
+        $ref: "#/components/messages/userSignedUp"
+
+operations:
+  onUserSignedUp:
+    action: receive
+    channel:
+      $ref: "#/channels/userSignedUp"
+
+components:
+  messages:
+    userSignedUp:
+      payload:
+        type: object
+        properties:
+          user-id:
+            type: integer
+            description: "id of the user"
+          user-email:
+            type: string
+            description: "email of the user"

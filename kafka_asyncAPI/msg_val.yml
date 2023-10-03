@@ -1,0 +1,30 @@
+asyncapi: "2.6.0"
+info:
+  title: "My Kafka API"
+  version: "1.0.0"
+
+servers:
+  kafkaBroker:
+    url: "localhost:9092"
+    protocol: "kafka"
+
+channels:
+  userSignedUp:
+    publish:
+      message:
+        $ref: "#/components/messages/UserSignedUpMessage"
+
+components:
+  messages:
+    UserSignedUpMessage:
+      schemaFormat: "application/vnd.apache.avro;version=1.9.0"
+      payload:
+        type: "record"
+        name: "UserSignedUp"
+        fields:
+          - name: "userId"
+            type: "string"
+          - name: "email"
+            type: "string"
+          - name: "signedUpAt"
+            type: "long"
