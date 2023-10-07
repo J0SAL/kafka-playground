@@ -16,12 +16,12 @@ operations:
     action: receive
     channel:
       $ref: "#/channels/userSignedUp"
+    messages:
+      - $ref: "#/components/messages/userSignedUp"
 
 channels:
   userSignedUp:
-    messages:
-      userSignedUp:
-        $ref: "#/components/messages/userSignedUp"
+    description: When User Signs up
 
 components:
   messages:
