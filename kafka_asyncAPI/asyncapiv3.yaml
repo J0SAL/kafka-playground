@@ -7,10 +7,9 @@ info:
 
 servers:
   kafkaServer:
-    host: <server-url>
+    host: kafka://test.mykafkacluster.org:8092/
     description: "Kafka Server"
     protocol: kafka
-    protocolVersion: <0.1.1>
 
 operations:
   onUserSignedUp:
